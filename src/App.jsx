@@ -1,20 +1,15 @@
-
-
-import './App.css'
-
-import List_user from './components/List_user'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter,Routes, Route } from "react-router-dom";
+import Listuser from "./components/Listuser";
 function App() {
   
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<List_user></List_user>} />
-         
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Listuser></Listuser>}></Route>
+            </Routes>
+        </BrowserRouter>
     </div>
   )
 }
