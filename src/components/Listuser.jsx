@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import Swal from "sweetalert2"
-import withReactContent from "sweetalert2-react-content"
+
 import { Link } from "react-router-dom"
 
 const Listuser = () => {
@@ -14,16 +13,20 @@ const Listuser = () => {
   const getuser = async ()=>{
      const response = await axios.get(`${url}/usuarios`)
      setusers(response.data);
+  
      
   }
 
   const delete_user = async (id)=>{
-      axios.delete(`${url}/usuario/${id}`)
+     await axios.delete(`${url}/usuario/${id}`)
       getuser()
   }
   return (
     <>
+    <div className="d-flex justify-content-center align-item-center mt-2">
       
+    <Link to="/Register" className="btn btn-success ">Crear Usuario</Link>
+    </div>
      <div class="container">
         <table class="table mt-3 table-bordered">
           <thead>
@@ -35,7 +38,7 @@ const Listuser = () => {
           </thead>
           <tbody>
             {
-              users.map((u, i) => (
+              users.map((u) => (
                 <tr key={u.id} className="text-center">
                   <td>{u.name}</td>
                   <td>{u.email}</td>
@@ -47,6 +50,9 @@ const Listuser = () => {
           </tbody>
         </table>
       </div>
+
+
+      
     </>
   )
 }
