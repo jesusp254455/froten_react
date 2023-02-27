@@ -42,8 +42,8 @@ const Listuser = () => {
                 <tr key={u.id} className="text-center">
                   <td>{u.name}</td>
                   <td>{u.email}</td>
-                  <td><button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar</button>&nbsp;&nbsp;
-                    <button type="button" class="btn btn-outline-danger" onClick={()=>delete_user(u.id)}>Eliminar</button> </td>
+                  <td> <Link to={`/edit/${u.id}`} className="btn btn-outline-success">Editar</Link> &nbsp;&nbsp;
+                    <button type="button" className="btn btn-outline-danger" onClick={()=>delete_user(u.id)}>Eliminar</button> </td>
                 </tr>
               ))
             }
