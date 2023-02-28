@@ -16,17 +16,20 @@ const Update_user = () => {
     })
     navigate('/')
   }
+  useEffect ( ()=>{
+    getusersByid()
+}, [])
+  const getusersByid = async () =>{
+    const response = await  axios.get(`${url}${id}`)
+    setname(response.data.name);
+    setemail(response.data.email)
+   }
 
-  useEffect( ()=>{
-     const getusersByid = async () =>{
-      const response = await  axios.get(`${url}${id}`)
-      alert(response.data);
-     }
-     getusersByid
-  },[])
 
   return (
-    <form className="row g-3" onSubmit={update}>
+   <>
+      <div className="container">
+      <form className="row g-3" onSubmit={update}>
                 <div className="mb-3 row mt-3">
                   <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
                   <div className="col-sm-10">
@@ -40,10 +43,11 @@ const Update_user = () => {
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" id="btn-cerrar" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                   <button type="submit"  className="btn btn-primary">Guardar</button>
                 </div>
               </form>
+      </div>
+   </>
   )
 }
 
